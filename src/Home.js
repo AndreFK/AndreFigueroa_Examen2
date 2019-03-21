@@ -4,14 +4,16 @@ import  {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
 import Project from "./components/ProjectCodeName"
 import { Provider as ReduxProvider } from "react-redux";
 import configureStore from "./modules/store";
+import Weather from './Weather'
 
 const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
 
 const routes = (
     <Router>
         <Switch>
-            <Route path="/project-code-name" component={Project}/>
-            <Link to="/project-code-name">Click me to see some projects code Names</Link>
+            <Route exact path="/" component={Project}/>
+            <Route path = "/weather/March/21" component={Weather}/>
+            <Link to="weather/month/:day">Click me to see some projects code Names</Link>
         </Switch>
     </Router>
 );
@@ -19,15 +21,18 @@ const routes = (
 class Home extends Component{
     constructor(props){
         super(props);
-        this.state = {show: "Bienvenido a Project Code Names"}
+        this.state = {
+            show1: "Bienvenido",
+            show2: "Weather App"
+        }
     }
 
     handleChange = () => {
-        if(this.state.show === "813N83N1D0 4 PR0J3CT C0D3 N4M3"){
-            this.setState({show:"Bienvenido a Project Code Names"})
+        if(this.state.show1 === "Bienvenido"){
+            this.setState({show1:"Weather App", show2:"Bienvenido"})
         }
         else{
-            this.setState({show: "813N83N1D0 4 PR0J3CT C0D3 N4M3"})
+            this.setState({show1: "Bienvenido", show2:"Weather App"})
         }
     }
 
@@ -35,10 +40,11 @@ class Home extends Component{
         return(
             <div style={{textAlign:'center'}}> 
                 <header>
-                    <h1>{this.state.show}</h1>
+                    <h1>{this.state.show1}</h1>
+                    <h1>{this.state.show2}</h1>
                 </header>
                 <Button color ="primary" variant = "contained" onClick ={this.handleChange}>
-                    BOOM
+                    Intercalar
                 </Button>     
                 <ReduxProvider store={reduxStore}>
                 <div>

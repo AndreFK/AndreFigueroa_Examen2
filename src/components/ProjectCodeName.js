@@ -48,22 +48,10 @@ class SampleComponent extends Component {
   
 
   generate = () => {
-    return this.props.items.map(item => (
+    return (
       <div>  
-      <ListItem key={item}>
-        <ListItemText primary={item.description} />
-        <ListItemSecondaryAction>
-          <IconButton
-            aria-label="Delete"
-            onClick={() => this.handleDelete(item.id)}
-            value={item.id}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
       </div>
-    ));
+    );
   };
 
   handleSubmit = event => {

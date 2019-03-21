@@ -3,16 +3,10 @@ import _ from "lodash";
 
 const defaultState = {
   items: [
-    {id:0, description: "Estos"},
-    {id:1, description: "Son"},
-    {id:2, description: "Ejemplos"},
-    {id:3, description: "De"},
-    {id:4, description: "Varios"},
-    {id:5, description: "Project"},
-    {id:6, description: "Code"},
-    {id:7, description: "Names"},
-    {id:8, description: "Para"},
-    {id:9, description: "Listar"},
+    {id: "0", description:"",month: "March", day: "20", max:"38", min:"18"},
+    {id: "0", description:"",month: "March", day: "21", max:"30", min:"20"},
+    {id: "0", description:"",month: "March", day: "22", max:"33", min:"17"},
+    {id: "0", description:"",month: "March", day: "23", max:"31", min:"19"},
   ]
 };
 
@@ -26,6 +20,10 @@ const todoReducer = (state = defaultState, action) => {
       let newState = _.cloneDeep(state);
       newState.items.push(newItem);
       return newState;
+    }
+
+    case ACTIONS.Types.GET_DATE:{
+
     }
 
     case ACTIONS.Types.DELETE_ITEM: {
