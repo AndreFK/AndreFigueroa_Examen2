@@ -15,9 +15,9 @@ const Types = {
     payload: id
   });
 
-  const getDate = prop => ({
-    type= Types.GET_DATE,
-    payload = props
+  const getDate = (month, day) => ({
+    type: Types.GET_DATE,
+    payload : (month, day)
   });
   
   export default {

@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import Button from '@material-ui/core/Button'
 import  {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
-import Project from "./components/ProjectCodeName"
 import { Provider as ReduxProvider } from "react-redux";
 import configureStore from "./modules/store";
-import Weather from './Weather'
+import Weather from './components/Weather'
 
 const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
 
 const routes = (
     <Router>
         <Switch>
-            <Route exact path="/" component={Project}/>
+            <Route exact path="/" component={Home}/>
             <Route path = "/weather/March/21" component={Weather}/>
-            <Link to="weather/month/:day">Click me to see some projects code Names</Link>
+            <Route path = "/weather/March/22" component={Weather}/>
+            <Route path = "/weahter/March/23" component={Weather}/>
+            <Route path = "/weather/March/20" component={Weather}/>
+            <Link to="/weather/March/21"><h1>HOO</h1></Link>
         </Switch>
     </Router>
 );
@@ -48,7 +50,6 @@ class Home extends Component{
                 </Button>     
                 <ReduxProvider store={reduxStore}>
                 <div>
-                    <br/>
                     {routes}
                 </div>
                 </ReduxProvider>

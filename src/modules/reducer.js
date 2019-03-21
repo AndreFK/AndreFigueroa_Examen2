@@ -3,10 +3,10 @@ import _ from "lodash";
 
 const defaultState = {
   items: [
-    {id: "0", description:"",month: "March", day: "20", max:"38", min:"18"},
-    {id: "0", description:"",month: "March", day: "21", max:"30", min:"20"},
-    {id: "0", description:"",month: "March", day: "22", max:"33", min:"17"},
-    {id: "0", description:"",month: "March", day: "23", max:"31", min:"19"},
+    {id: 0, description:"",month: "March", day: "20", max:"38", min:"18"},
+    {id: 1, description:"",month: "March", day: "21", max:"30", min:"20"},
+    {id: 3, description:"",month: "March", day: "22", max:"33", min:"17"},
+    {id: 4, description:"",month: "March", day: "23", max:"31", min:"19"},
   ]
 };
 
@@ -16,14 +16,18 @@ const todoReducer = (state = defaultState, action) => {
       console.log(action);
 
       let item = action.payload;
-      let newItem = { id: state.items.length + 1, description: item };
+      let newItem = { id: state.items.length + 1, month: item.month, day: item.day, max: item.max, min: item.min};
       let newState = _.cloneDeep(state);
       newState.items.push(newItem);
       return newState;
     }
 
     case ACTIONS.Types.GET_DATE:{
+      let newState= _.cloneDeep(state);
+      let item = action.payload;
 
+      let date = newState.items.filter(data => (data.month === item.month && data.day === item.day));
+      return date;
     }
 
     case ACTIONS.Types.DELETE_ITEM: {
